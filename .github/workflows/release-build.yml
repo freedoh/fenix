@@ -5,8 +5,8 @@ on:
       - 'v*'
 
 jobs:
-  build_vim1_mainline_kernel_images:
-    name: Build VIM1 Mainline Kernel Images
+  build_vim3l_mainline_kernel_images:
+    name: Build VIM3L Mainline Kernel Images
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -25,32 +25,32 @@ jobs:
       # Build
       - name: Build Image
         run: |
-          .github/workflows/build.sh mainline VIM1 Ubuntu
+          .github/workflows/build.sh mainline VIM3L Ubuntu
 
       # Upload Images to GitHub Actions Artifacts
-      - name: 'Upload VIM1 Ubuntu Server Mainline Kernel Images'
+      - name: 'Upload VIM3L Ubuntu Server Mainline Kernel Images'
         uses: actions/upload-artifact@v2
         with:
-          name: VIM1-Ubuntu-Server-Mainline-Kernel-Firmware-${{ steps.date.outputs.date }}
+          name: VIM3L-Ubuntu-Server-Mainline-Kernel-Firmware-${{ steps.date.outputs.date }}
           path: |
             ${{ github.workspace }}/build/images/VIM*-server-*.img.xz
 
-      - name: 'Upload VIM1 Ubuntu Desktop Mainline Kernel Images'
+      - name: 'Upload VIM3L Ubuntu Desktop Mainline Kernel Images'
         uses: actions/upload-artifact@v2
         with:
-          name: VIM1-Ubuntu-Desktop-Mainline-Kernel-Firmware-${{ steps.date.outputs.date }}
+          name: VIM3L-Ubuntu-Desktop-Mainline-Kernel-Firmware-${{ steps.date.outputs.date }}
           path: |
             ${{ github.workspace }}/build/images/VIM*-gnome-*.img.xz
 
-      - name: 'Upload VIM1 Debian Packages for Mainline Kernel'
+      - name: 'Upload VIM3L Debian Packages for Mainline Kernel'
         uses: actions/upload-artifact@v2
         with:
-          name: VIM1-Debian-Packages-Mainline-Kernel-${{ steps.date.outputs.date }}
+          name: VIM3L-Debian-Packages-Mainline-Kernel-${{ steps.date.outputs.date }}
           path: |
             ${{ github.workspace }}/build/images/debs/
 
-  build_vim1_legacy_kernel_images:
-    name: Build VIM1 Legacy Kernel Images
+  build_vim3l_legacy_kernel_images:
+    name: Build VIM3L Legacy Kernel Images
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -69,27 +69,27 @@ jobs:
       # Build
       - name: Build Image
         run: |
-          .github/workflows/build.sh legacy VIM1 Ubuntu
+          .github/workflows/build.sh legacy VIM3L Ubuntu
 
       # Upload Images to GitHub Actions Artifacts
-      - name: 'Upload VIM1 Ubuntu Server Legacy Kernel Images'
+      - name: 'Upload VIM3L Ubuntu Server Legacy Kernel Images'
         uses: actions/upload-artifact@v2
         with:
-          name: VIM1-Ubuntu-Server-Legacy-Kernel-Firmware-${{ steps.date.outputs.date }}
+          name: VIM3L-Ubuntu-Server-Legacy-Kernel-Firmware-${{ steps.date.outputs.date }}
           path: |
             ${{ github.workspace }}/build/images/VIM*-server-*.img.xz
 
-      - name: 'Upload VIM1 Ubuntu Desktop Legacy Kernel Images'
+      - name: 'Upload VIM3L Ubuntu Desktop Legacy Kernel Images'
         uses: actions/upload-artifact@v2
         with:
-          name: VIM1-Ubuntu-Desktop-Legacy-Kernel-Firmware-${{ steps.date.outputs.date }}
+          name: VIM3L-Ubuntu-Desktop-Legacy-Kernel-Firmware-${{ steps.date.outputs.date }}
           path: |
             ${{ github.workspace }}/build/images/VIM*-gnome-*.img.xz
 
-      - name: 'Upload VIM1 Debian Packages for Legacy Kernel'
+      - name: 'Upload VIM3L Debian Packages for Legacy Kernel'
         uses: actions/upload-artifact@v2
         with:
-          name: VIM1-Debian-Packages-Legacy-Kernel-${{ steps.date.outputs.date }}
+          name: VIM3L-Debian-Packages-Legacy-Kernel-${{ steps.date.outputs.date }}
           path: |
             ${{ github.workspace }}/build/images/debs/
 
